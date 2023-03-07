@@ -1,0 +1,10 @@
+/**
+ * 
+ */
+/**
+ * @author Shivam.Shukla
+ *
+ */
+module Task_05 {
+	requires java.sql;
+}

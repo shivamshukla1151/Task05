@@ -1,0 +1,21 @@
+package com.employee;
+
+import java.io.*;
+
+public class Start {
+public static void main(String[] args) throws NumberFormatException, IOException {
+	System.out.println("Enter your choice");
+	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	int ch = Integer.parseInt(br.readLine());
+	switch(ch) {
+	case 1:
+		System.out.println("Case 1");
+		break;
+	case 2:
+		System.out.println("Case 2");
+		break;
+		
+	
+	}
+}
+}

@@ -1,0 +1,32 @@
+package com.employee;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+public class EmployeeDao {
+
+	public static boolean insertEmployee(Employee employee) {
+		boolean flag = false;
+		try {
+			
+			Connection con = ConnectionProvider.createConnection();
+			
+			String qurey = "insert into employees(empName, empDepartment, empDesignation, empEmail, empAddress, empContact) values(?,?,?,?,?,?)";
+			PreparedStatement preparedStatement = con.prepareStatement(qurey);
+			preparedStatement.setString(1, employee.getName());
+			preparedStatement.setString(2,employee.getDepartment());
+			preparedStatement.setString(3,employee.getDesignation());
+			preparedStatement.setString(4,employee.getEmail());
+			preparedStatement.setString(5,employee.getAddress());
+			preparedStatement.setString(6,employee.getContact());
+			
+			preparedStatement.executeUpdate();
+			flag = true;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return flag;
+	}
+}

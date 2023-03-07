@@ -1,0 +1,80 @@
+package com.employee;
+
+import java.io.*;
+
+public class Start {
+public static void main(String[] args) throws NumberFormatException, IOException {
+	
+	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	while(true) {
+		System.out.println("Enter your choice 1) To Save Employee.\n 2) To Display all Employee. \n 3) To Delete.  \n 4) To Search. \n 5) To Update Employee. \n 6) To exit");
+		int ch = Integer.parseInt(br.readLine()); 
+		switch(ch) {
+		
+		case 1:
+			Employee employee = userInput(br);
+			boolean response = EmployeeDao.insertEmployee(employee);
+			
+			if(response) 
+				System.out.println("The Employee Record inserted Successfully...!!");
+			else 
+				System.out.println("The Employee Record could not inserted something went wrong");
+			
+			break;
+			
+		case 2:
+			EmployeeDao.showAllEmployee();
+			break;
+			
+		case 3:
+			System.out.println("Enter the email to delete");
+			String email = br.readLine();
+			boolean rsponse = EmployeeDao.deleteEmployee(email);
+			if(rsponse) 
+				System.out.println("The Employee Record Deleted Successfully...!!");
+			else 
+				System.out.println("The Employee Record could not Deleted something went wrong");
+			
+			break;
+			
+		case 4:
+			System.out.println("Enter the Email id of employee");
+			String ema = br.readLine();
+			EmployeeDao.searchEmployee(ema);
+			break; 
+			
+		case 5:
+			System.out.println("");
+			break;
+		case 6:
+			System.out.println("Exiting");
+			System.exit(0);
+			break;
+		default:
+			System.out.println("Invalid Choice");
+			
+		
+		}
+		
+		
+	}
+}
+
+public static Employee userInput(BufferedReader br) throws IOException {
+	System.out.println("Enter the Employee Name.");
+	String name = br.readLine();
+	System.out.println("Enter the Employee Department.");
+	String department = br.readLine();
+	System.out.println("Enter the Employee Designation.");
+	String designation = br.readLine();
+	System.out.println("Enter the Employee Email");
+	String email = br.readLine();
+	System.out.println("Enter the Employee Address");
+	String address = br.readLine();
+	System.out.println("Enter the Employee Contact");
+	String contact = br.readLine();
+	
+	 return new Employee(name,department, designation,email, address, contact );
+	
+}
+}
