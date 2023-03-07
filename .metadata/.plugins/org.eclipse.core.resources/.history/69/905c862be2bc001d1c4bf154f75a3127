@@ -91,7 +91,7 @@ public class EmployeeDao {
 	public static boolean searchEmployee(String ema) {
 		boolean flag = false;
 		try {
-
+			System.out.println("Inside search..!!!");
 			Connection con = ConnectionProvider.createConnection();
 
 			String query = "select * from employees where empEmail=?";
@@ -101,9 +101,9 @@ public class EmployeeDao {
 
 			if (!set.isBeforeFirst()) {
 				System.out.println("No Record Found...!!!");
-				return flag = true;
+				return flag = false;
 			} else {
-
+				System.out.println("Inside search..!!!");
 				while (set.next()) {
 					int id = set.getInt(1);
 					String name = set.getString(2);
@@ -118,7 +118,7 @@ public class EmployeeDao {
 							+ "\n Contact: " + contact + "\n");
 
 				}
-				return flag = false;
+				return flag=true;
 
 			}
 
@@ -127,6 +127,7 @@ public class EmployeeDao {
 			e.printStackTrace();
 			return false;
 		}
+		return true;
 
 	}
 

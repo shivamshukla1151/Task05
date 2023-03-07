@@ -97,11 +97,11 @@ public class Start {
 		String department = br.readLine();
 		System.out.println("Enter the Employee Designation.");
 		String designation = br.readLine();
-		System.out.println("Enter the Employee Email.");
+		
 		String email = br.readLine();
 		if(!EmployeeDao.searchEmployee(email)) {
 			System.out.println("Email already taken");
-			userInput();
+			
 		}
 		
 		System.out.println("Enter the Employee Address");

@@ -13,7 +13,7 @@ public class Start {
 			switch (ch) {
 
 			case 1:
-				Employee employee = userInput();
+				Employee employee = userInput(br);
 				boolean response = EmployeeDao.insertEmployee(employee);
 
 				if (response)
@@ -89,21 +89,20 @@ public class Start {
 		}
 	}
 
-	public static Employee userInput() throws IOException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	public static Employee userInput(BufferedReader br) throws IOException {
 		System.out.println("Enter the Employee Name.");
 		String name = br.readLine();
 		System.out.println("Enter the Employee Department.");
 		String department = br.readLine();
 		System.out.println("Enter the Employee Designation.");
 		String designation = br.readLine();
-		System.out.println("Enter the Employee Email.");
+		while(true) {
+		System.out.println("Enter the Employee Email");
 		String email = br.readLine();
-		if(!EmployeeDao.searchEmployee(email)) {
+		if(EmployeeDao.searchEmployee(email)) {
 			System.out.println("Email already taken");
-			userInput();
 		}
-		
+		}
 		System.out.println("Enter the Employee Address");
 		String address = br.readLine();
 		System.out.println("Enter the Employee Contact");
